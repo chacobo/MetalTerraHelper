@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open My App</title>
+  <script>
+    window.onload = function() {
+      // Get the query string from the URL (everything after '?')
+      const queryString = window.location.search; // includes the '?'
+
+      // Construct the custom protocol URL
+      // Remove the '?' from queryString and append it to your protocol scheme
+      const customProtocolUrl = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
+
+      // Redirect to the custom protocol URL
+      window.location.href = customProtocolUrl;
+    };
+  </script>
+</head>
+<body>
+  <p>If you are not redirected automatically, <a id="manual-link" href="#">click here</a>.</p>
+
+  <script>
+    // Also update the manual link href for convenience
+    const queryString = window.location.search;
+    const manualLink = document.getElementById("manual-link");
+    manualLink.href = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
+  </script>
+</body>
+</html>
