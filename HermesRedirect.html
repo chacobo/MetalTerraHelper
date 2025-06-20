@@ -3,28 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <title>Open My App</title>
+  <style>
+    /* ChatGPT-style dark mode */
+    body {
+      background-color: #343541;
+      color: #d7dadc;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    a {
+      color: #10a37f;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #0d7d60;
+      text-decoration: underline;
+    }
+    p {
+      font-size: 1.1rem;
+      margin: 0 0 1rem 0;
+    }
+  </style>
   <script>
     window.onload = function() {
-      // Get the query string from the URL (everything after '?')
-      const queryString = window.location.search; // includes the '?'
+      const queryString = window.location.search; // includes '?'
+      const customProtocolUrl = "myapp://" + (queryString.length > 0 ? queryString.substring(1) : "");
 
-      // Construct the custom protocol URL
-      // Remove the '?' from queryString and append it to your protocol scheme
-      const customProtocolUrl = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
-
-      // Redirect to the custom protocol URL
+      // Redirect to custom protocol
       window.location.href = customProtocolUrl;
+
+      // Attempt to close the window after short delay
+      setTimeout(() => {
+        window.close();
+      }, 1000);
     };
   </script>
 </head>
 <body>
   <p>If you are not redirected automatically, <a id="manual-link" href="#">click here</a>.</p>
-
   <script>
-    // Also update the manual link href for convenience
     const queryString = window.location.search;
     const manualLink = document.getElementById("manual-link");
-    manualLink.href = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
+    manualLink.href = "myapp://" + (queryString.length > 0 ? queryString.substring(1) : "");
   </script>
 </body>
 </html>
