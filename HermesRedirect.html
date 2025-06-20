@@ -35,7 +35,7 @@
   <script>
     window.onload = function() {
       const queryString = window.location.search; // includes '?'
-      const customProtocolUrl = "myapp://" + (queryString.length > 0 ? queryString.substring(1) : "");
+      const customProtocolUrl = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
 
       // Redirect to custom protocol
       window.location.href = customProtocolUrl;
@@ -52,7 +52,7 @@
   <script>
     const queryString = window.location.search;
     const manualLink = document.getElementById("manual-link");
-    manualLink.href = "myapp://" + (queryString.length > 0 ? queryString.substring(1) : "");
+    manualLink.href = "metalterra://" + (queryString.length > 0 ? queryString.substring(1) : "");
   </script>
 </body>
 </html>
